@@ -1,6 +1,6 @@
 <template>
-  <div id='header'>
-    
+  <div class='header'>
+    我是header
   </div>
 </template>
 
