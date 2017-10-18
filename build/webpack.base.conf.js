@@ -1,12 +1,12 @@
-var path = require('path')
-var utils = require('./utils')
-var config = require('../config')
-var vueLoaderConfig = require('./vue-loader.conf')
+var path = require('path');
+var utils = require('./utils');
+var config = require('../config');
+var vueLoaderConfig = require('./vue-loader.conf');
 
 function resolve (dir) {
-  return path.join(__dirname, '..', dir)
+  return path.join(__dirname, '..', dir);
 }
-const vuxLoader = require('vux-loader')
+const vuxLoader = require('vux-loader');
 const webpackConfig = {
   entry: {
     app: './src/main.js'
@@ -72,8 +72,8 @@ const webpackConfig = {
       }
     ]
   }
-}
+};
 
 module.exports = vuxLoader.merge(webpackConfig, {
   plugins: ['vux-ui', 'duplicate-style']
-})
+});

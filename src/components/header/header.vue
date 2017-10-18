@@ -11,6 +11,8 @@ export default {
 };
 </script>
 
-<style scoped>
-
+<style lang="stylus" scoped>
+.header
+  background: #ff0000
 </style>
+
