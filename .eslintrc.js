@@ -24,6 +24,9 @@ module.exports = {
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // 加分号
-    'semi': ['error', 'always']
+    'semi': ['error', 'always'],
+    'space-before-function-paren': ['error', 'never'], // 函数名字后边不能有空格
+    'no-unused-vars': ['off']
+    // 'camelcase': ["error", {properties: "never"}]
   }
 }
