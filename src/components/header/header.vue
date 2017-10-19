@@ -87,7 +87,7 @@ export default {
     }
   },
   created() {
-    this.classMap = ['decrease', 'discount', 'guarantee', 'invoice', 'sepcial'];
+    this.classMap = ['decrease', 'discount', 'guarantee', 'invoice', 'special'];
   },
   methods: {
     showDetail() {
@@ -155,7 +155,7 @@ export default {
             bg-image('guarantee_1')
           &.invoice
             bg-image('invoice_1')
-          &.sepcial
+          &.special
             bg-image('special_1')
         .text
           line-height: 12px
@@ -283,7 +283,7 @@ export default {
                 bg-image('guarantee_2')
               &.invoice
                 bg-image('invoice_2')
-              &.sepcial
+              &.special
                 bg-image('special_2')
             .text
               font-size: 12px
