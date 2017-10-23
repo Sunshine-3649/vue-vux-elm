@@ -29,7 +29,7 @@
                   <span class="old" v-show="food.oldPrice">￥{{food.oldPrice}}</span>
                 </div>
                 <div class="cartcontrol-wrapper">
-                  <cartcontrol :food="food"></cartcontrol>
+                  <cartcontrol @add="addFood" :food="food"></cartcontrol>
                 </div>
               </div>
             </li>
@@ -37,7 +37,7 @@
         </li>
       </ul>
     </div>
-    <shopcart :deliverPrice="seller.deliverPrice" :minPrice="seller.minPrice"></shopcart>
+    <shopcart ref="shopcart" :selectFoods="selectFoods" :deliverPrice="seller.deliverPrice" :minPrice="seller.minPrice"></shopcart>
   </div>
 </template>
 
@@ -57,7 +57,7 @@ export default {
   data() {
     return {
       classMap: ['decrease', 'discount', 'special', 'invoice', 'guarantee'],
-      goods: {},
+      goods: [],
       listHight: [], // 右侧列表的高度区间
       scrollY: 0
     };
@@ -77,6 +77,17 @@ export default {
         }
       }
       return 0;
+    },
+    selectFoods() {
+      let foods = [];
+      this.goods.forEach(good => {
+        good.foods.forEach(food => {
+          if (food.count) {
+            foods.push(food);
+          }
+        });
+      });
+      return foods;
     }
   },
   created() {
@@ -124,6 +135,15 @@ export default {
       let foodList = this.$refs.foodList;
       let el = foodList[index];
       this.foodScroll.scrollToElement(el, 300);
+    },
+    addFood(target) {
+      this._drop(target);
+    },
+    _drop(target) {
+      this.$nextTick(() => {
+        // 调用子组件的方法
+        this.$refs.shopcart.drop(target);
+      });
     }
   }
 };
@@ -232,7 +252,7 @@ export default {
             font-size: 10px
             color: rgb(147, 153, 159)
         .cartcontrol-wrapper
-          position absolute
-          right 0
-          bottom 12px
+          position: absolute
+          right: 0
+          bottom: 12px
 </style>
