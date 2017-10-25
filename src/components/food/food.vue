@@ -127,7 +127,6 @@ export default {
     },
     selectRating(type) {
       this.selectType = type;
-      console.log(this.selectType);
       this.$nextTick(() => {
         this.scroll.refresh();
       });
@@ -139,7 +138,6 @@ export default {
       });
     },
     needShow(type, text) {
-      console.log(type);
       if (this.onlyContent && !text) {
         return false;
       }

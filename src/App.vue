@@ -12,30 +12,39 @@
         <router-link to="/sellers">商家</router-link>
       </div>
     </div>
-    <router-view :seller="seller"></router-view>
+    <keep-alive>
+      <router-view :seller="seller"></router-view>
+    </keep-alive>
 
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import { urlParse } from '@/common/js/util';
 import vHeader from '@/components/header/header';
 export default {
   name: 'app',
   data() {
     return {
-      seller: {}
+      seller: {
+        id: (() => {
+          let queryParam = urlParse();
+          console.log(queryParam);
+          return queryParam.id;
+        })()
+      }
     };
   },
   components: {
     vHeader
   },
   created() {
-    axios.get('/api/seller').then(res => {
+    axios.get('/api/seller?' + this.seller.id).then(res => {
       const result = res.data;
       if (result.errno === 0) {
-        this.seller = result.data;
-        console.log(this.seller);
+        // this.seller = result.data;
+        this.seller = Object.assign({}, this.seller, result.data);
       }
     });
   }

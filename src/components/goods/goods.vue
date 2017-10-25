@@ -101,7 +101,6 @@ export default {
       const result = res.data;
       if (result.errno === ERR_OK) {
         this.goods = result.data;
-        console.log(this.goods);
         this.$nextTick(() => {
           this._initScroll();
           // 计算高度
